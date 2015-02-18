@@ -1,0 +1,116 @@
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.exe.config
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.exe
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.pdb
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\itextsharp.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\itextsharp.xml
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\de\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\es\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\fr\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\it\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\ja\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\ko\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\ru\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hans\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hant\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\MainWindow.baml
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\MainWindow.g.cs
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\App.g.cs
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram_MarkupCompile.cache
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.g.resources
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.Properties.Resources.resources
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.csproj.GenerateResource.Cache
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.exe
+C:\Users\Stefan\Documents\Visual Studio 2013\Projects\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.pdb
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.exe.config
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.exe
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.pdb
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.exe
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.pdb
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\itextsharp.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\itextsharp.xml
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\de\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\es\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\fr\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\it\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\ja\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\ko\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\ru\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hans\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hant\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\MainWindow.baml
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\MainWindow.g.cs
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\App.g.cs
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram_MarkupCompile.cache
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.g.resources
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.Properties.Resources.resources
+C:\Users\Stefan\Desktop\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.csproj.GenerateResource.Cache
+C:\Users\Stefan\documents\visual studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\Stefan\documents\visual studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Stefan\documents\visual studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
+C:\Users\Stefan\documents\visual studio 2013\Projects\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.exe.config
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.exe
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.pdb
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.exe
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\NewspaperProgram.pdb
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\itextsharp.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\itextsharp.xml
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\de\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\es\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\fr\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\it\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\ja\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\ko\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\ru\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hans\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hant\Microsoft.Expression.Drawing.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\MainWindow.baml
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\MainWindow.g.cs
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\App.g.cs
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram_MarkupCompile.cache
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.g.resources
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.Properties.Resources.resources
+C:\Users\Stefan\Desktop\Newspaper invoice program\NewspaperProgram\NewspaperProgram\obj\Debug\NewspaperProgram.csproj.GenerateResource.Cache

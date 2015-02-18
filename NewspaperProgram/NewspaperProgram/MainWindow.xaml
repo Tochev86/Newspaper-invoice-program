@@ -1,0 +1,1010 @@
+﻿<Window x:Class="NewspaperProgram.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+        Title="Програма за смятане на обяви" 
+        Height="900" 
+        Width="840"
+        FontSize="16" 
+        FontFamily="Verdana" 
+        Icon="Icons\256x256.ico"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        SizeChanged="Window_SizeChanged" 
+        Closing="ProgramMainWindow_Closing"
+        Name="ProgramMainWindow">
+    <Window.Resources>
+        <ResourceDictionary>
+            <RoutedUICommand x:Key="SaveButton" Text="text" />
+            <RoutedUICommand x:Key="NewInvoiceButton" Text="text" />
+            <RoutedUICommand x:Key="InvoicePrintButton" Text="text" />
+            <RoutedUICommand x:Key="CitizenAdvertisementPrintButton" Text="text" />
+            <RoutedUICommand x:Key="CompanyAdvertisementPrintButton" Text="text" />
+            <Style x:Key="textBoxBackgroundStyle" TargetType="TextBox">
+                <Setter Property="BorderBrush" Value="#D6202C" />
+            </Style>
+            <Style x:Key="textBoxBorderBrushStyle" TargetType="TextBox">
+                <Setter Property="BorderBrush" Value="#D6202C" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="topMesage" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="LabelTipButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Foreground" Value="Red" />
+                <Setter Property="Height" Value="18" />
+                <Setter Property="Width" Value="16"/>
+                <Setter Property="Margin" Value="6 0 0 16"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="{x:Type Label}" TargetType="Label">
+                <Setter Property="OverridesDefaultStyle" Value="true" />
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Foreground" Value="Red" />
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Label">
+                            <ed:Callout Name="Border"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                MinWidth="100"
+                                MinHeight="30"
+                                Margin="0,0,0,50"
+                                AnchorPoint="0,1.5"
+                                Background="White"
+                                BorderThickness="1"
+                                CalloutStyle="RoundedRectangle"
+                                Fill="#FAF6CD"
+                                FontSize="12"
+                                Stroke="Red">
+                                <ContentPresenter Margin="4"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top" />
+                            </ed:Callout>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Visibility" Value="Visible">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                               From="0" To="1" Duration="0:0:0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Executed="SaveButton_Click" Command="{StaticResource SaveButton}" />
+        <CommandBinding Executed="newInvoice_Click" Command="{StaticResource NewInvoiceButton}" />
+        <CommandBinding Executed="PrintInvoiceButton_Clicked" Command="{StaticResource InvoicePrintButton}" />
+        <CommandBinding Executed="PrintCitizenAdvertisementButton_Click" Command="{StaticResource CitizenAdvertisementPrintButton}" />
+        <CommandBinding Executed="PrintCompanyAdvertisementButton_Click" Command="{StaticResource CompanyAdvertisementPrintButton}" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{StaticResource SaveButton}" />
+        <KeyBinding Key="N" Modifiers="Control" Command="{StaticResource NewInvoiceButton}" />
+        <KeyBinding Key="P" Modifiers="Control" Command="{StaticResource InvoicePrintButton}" />
+        <KeyBinding Key="P" Modifiers="Control+Alt" Command="{StaticResource CitizenAdvertisementPrintButton}" />
+        <KeyBinding Key="P" Modifiers="Control+Shift" Command="{StaticResource CompanyAdvertisementPrintButton}" />
+    </Window.InputBindings>
+    <StackPanel Name="MainStackPanel">
+        <Menu Height="22">
+            <MenuItem Name="MenuFile" Header="_Файл">
+                <MenuItem Name="newInvoice" 
+                          Header="Нова обява"
+                          Click="newInvoice_Click" 
+                          ToolTip="Ctrl + N"/>
+                <MenuItem Name="Save" 
+                          Header="Запази" 
+                          Click="SaveButton_Click" 
+                          ToolTip="Ctrl + S"/>
+                <MenuItem Name="CopyInvoice" 
+                          Header="Копирай обявата" 
+                          Click="CopyInvoice_Click"/>
+                <MenuItem Name="PasteInvoice" 
+                          Header="Постави обявата" 
+                          Click="PasteInvoice_Click"
+                          IsEnabled="False"/>
+                <MenuItem Name="Delete" 
+                          Header="Изтрй" 
+                          Click="DeleteButton_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="Icons\DeleteRed.png" 
+                               Width="20" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="DeleteInvoicesFor" 
+                          Header="Изтрй обяви за...">
+                    <MenuItem Name="DeleteInvoicesForADayButton" 
+                              Click="DeleteInvoicesForADayButton_Click">
+                        <MenuItem.Header>
+                            <WrapPanel>
+                                <TextBlock Text="ден" 
+                                           Width="40" 
+                                           Margin="0 0 15 0"/>
+                                <TextBox Name="DeleteInvoicesForADayTextBox" Text="12.02.2015"
+                                         Width="78"
+                                         Height="26"
+                                         HorizontalContentAlignment="Center"
+                                         TextChanged="DeleteInvoicesForADayTextBox_TextChanged"/>
+                            </WrapPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Name="DeleteInvoicesForAMonthButton" 
+                              Click="DeleteInvoicesForAMonthButton_Click">
+                        <MenuItem.Header>
+                            <WrapPanel>
+                                <TextBlock Text="месец" Width="40" Margin="0 0 15 0"/>
+                                <TextBox Name="DeleteInvoicesForAMonthTextBox" Text="02.2015"
+                                         Width="78"
+                                         Height="26"
+                                         HorizontalContentAlignment="Center"
+                                         TextChanged="DeleteInvoicesForAMonthTextBox_TextChanged"/>
+                            </WrapPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Name="DeleteInvoicesForAYearButton" 
+                              Click="DeleteInvoicesForAYearButton_Click">
+                        <MenuItem.Header>
+                            <WrapPanel>
+                                <TextBlock Text="година" 
+                                           Width="40" 
+                                           Margin="0 0 15 0"/>
+                                <TextBox Name="DeleteInvoicesForAYearTextBox" Text="2015"
+                                         Width="78"
+                                         Height="26"
+                                         HorizontalContentAlignment="Center"
+                                         TextChanged="DeleteInvoicesForAYearTextBox_TextChanged"/>
+                            </WrapPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Name="MenuOptions" Header="_Опции">
+                <MenuItem Name="ChangeDefaultData" 
+                          Header="Смени стойности по подразбиране" 
+                          Click="ChangeDefaultDataButton_Click"
+                          IsEnabled="True"/>
+                <MenuItem Name="SendCitizenAdvertisementEmail" 
+                          Header="Ипрати обяви за граждани по E-mail"
+                          Click="SendCitizenAdvertisementEmail_Click"/>
+                <MenuItem Name="SendCompanyAdvertisementEmail" 
+                          Header="Ипрати фирмена информация по E-mail"
+                          Click="SendCompanyAdvertisementEmail_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Разпечатай">
+                <MenuItem.Icon>
+                    <Image Width="18" Source="Icons\print.png"/>
+                </MenuItem.Icon>
+                <MenuItem Name="PrintInvoiceItem" 
+                          Header="Р_азпечатай фактурата"
+                          Click="PrintInvoiceButton_Clicked" 
+                          ToolTip="Ctrl + P" />
+                <MenuItem Name="PrintCitizenAdvertisementItem" 
+                          Click="PrintCitizenAdvertisementButton_Click"
+                          ToolTip="Ctrl + Alt + P">
+                    <MenuItem.Header>
+                        <TextBlock>
+                            Разпечатай експресни обяви<LineBreak/>
+                            за граждани за деня
+                        </TextBlock>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Name="PrintCompanyAdvertisementItem" 
+                          Click="PrintCompanyAdvertisementButton_Click"
+                          ToolTip="Ctrl + Shift + P">
+                    <MenuItem.Header>
+                        <TextBlock>
+                            Разпечатай експресна фирмена<LineBreak/>
+                            информация за деня
+                        </TextBlock>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ScrollViewer Name="ScrollViewerSttings" 
+                      VerticalScrollBarVisibility="Auto" 
+                      Height="920">
+            <StackPanel Name="PrintArea" 
+                        Width="800" Height="960" 
+                        HorizontalAlignment="Center">
+                <Canvas Name="TipValidationCanvas" 
+                        Panel.ZIndex="1">
+                    <Label Name="InvoiceDateValidationTip" 
+                           Canvas.Left="420" 
+                           Canvas.Top="128"
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете дата <LineBreak/>
+                                във формат "01.01.2015"!
+                            </TextBlock>
+                            <Button Name="InvoiceDateValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="InvoiceMultiplyingValidationTip" 
+                           Canvas.Left="695" 
+                           Canvas.Top="124"
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете колко пъти<LineBreak/> 
+                                обявата да бъде публикувана!<LineBreak/>
+                                Максималният брой<LineBreak/>
+                                на разпечатвания е 1000!
+                            </TextBlock>
+                            <Button Name="InvoiceMultiplyingValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="CustomerNameValidationTip" 
+                           Canvas.Left="250"
+                           Canvas.Top="206"
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете име на клиента.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="CustomerNameValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click"
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="CustomerLocationValidationTip" 
+                           Canvas.Left="250" 
+                           Canvas.Top="241" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете град.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="CustomerLocationValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="CustomerBulstatValidationTip" 
+                           Canvas.Left="250" 
+                           Canvas.Top="276"
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете правилен булстат без интервали.<LineBreak/>
+                                (не по-малко от 9 символа и не повече от 11 символа).
+                            </TextBlock>
+                            <Button Name="CustomerBulstatValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="CustomerStreetValidationTip" 
+                           Canvas.Left="250"
+                           Canvas.Top="312"
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете име на улица.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="CustomerStreetValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="CustomerMOLValidationTip"
+                           Canvas.Left="250" 
+                           Canvas.Top="332" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете М.О.Л.<LineBreak/>
+                                или получател на фактурата.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="CustomerMOLValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="InputTextValidationTip" 
+                           Canvas.Left="300" 
+                           Canvas.Top="408" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете текст за обявата.<LineBreak/>
+                                Полето не може да бъде празно!<LineBreak/>
+                                Максималния брой на думите е 1500!
+                            </TextBlock>
+                            <Button Name="InputTextValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click"
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="PricePerWordValidationTip" 
+                           Canvas.Left="228" 
+                           Canvas.Top="574" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете ценова стойност за 1 дума.<LineBreak/>
+                                Минимлана стойност 0,1 лв. / дума.<LineBreak/>
+                                Максимална стойност 1000 лв. / дума.<LineBreak/>
+                                Полето не може да бъде празно и да съдържа букви!
+                            </TextBlock>
+                            <Button Name="PricePerWordValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="ExecutantNameValidationTip" 
+                           Canvas.Left="630"
+                           Canvas.Top="206" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете име на изпълнителя.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="ExecutantNameValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="ExecutantLocationValidationTip" 
+                           Canvas.Left="630" 
+                           Canvas.Top="242"
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете град.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="ExecutantLocationValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click" 
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="ExecutantBulstatValidationTip"
+                           Canvas.Left="630"
+                           Canvas.Top="262" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете правилен булстат без интервали.<LineBreak/>
+                                (не по-малко от 9 символа и не повече от 11 символа).<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="ExecutantBulstatValidationTipButton"
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click"
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="ExecutantStreetValidationTip" 
+                           Canvas.Left="630"
+                           Canvas.Top="312" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете име на улица.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="ExecutantStreetValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click"
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Label Name="ExecutantMOLValidationTip" 
+                           Canvas.Left="630"
+                           Canvas.Top="348" 
+                           Visibility="Hidden">
+                        <WrapPanel>
+                            <TextBlock>
+                                Моля, въведете М.О.Л. на изпълнителя.<LineBreak/>
+                                Полето не може да бъде празно!
+                            </TextBlock>
+                            <Button Name="ExecutantMOLValidationTipButton" 
+                                    Style="{StaticResource LabelTipButtonStyle}"
+                                    Click="ValidationTipButtonClose_Click"
+                                    Content="X"/>
+                        </WrapPanel>
+                    </Label>
+                    <Viewbox Canvas.Left="438" 
+                             Canvas.Top="198" 
+                             Height="300" 
+                             Width="300">
+                        <Calendar Name="InvoiceCalendar" 
+                                  SelectedDatesChanged="InvoiceCalendar_SelectedDatesChanged"
+                                  Visibility="Hidden"
+                                  Language="BG">
+                        </Calendar>
+                    </Viewbox>
+                    <Button Name="DefaultDataConfirmButton"
+                            Canvas.Top="730" 
+                            Canvas.Left="500" 
+                            Height="50" Width="200" 
+                            HorizontalContentAlignment="Center"
+                            Visibility="Hidden"
+                            Click="DefaultDataConfirmButton_Click">
+                        <TextBlock TextAlignment="Center">
+                            Запази стойностите<LineBreak/>
+                            по подразбиране
+                        </TextBlock>
+                    </Button>
+                </Canvas>
+                <StackPanel Margin="50 30 50 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Column="0" 
+                               Grid.Row="0" 
+                               Source="Icons\backGround\logo.png" 
+                               Width="220" HorizontalAlignment="Left" 
+                               Margin=" 0 -10 0 0" />
+                        <Grid Grid.Column="1"
+                              Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="0" 
+                                       Style="{StaticResource topMesage}" 
+                                       FontWeight="Bold">
+                                Адрес приемна (за обяви, съобщения и реклами)
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="1" 
+                                       Style="{StaticResource topMesage}">
+                                4400 Пазарджик | ул. “Екзарх Йосив” №1 (в сграда на ДСК),
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="2" 
+                                       Style="{StaticResource topMesage}">
+                                тел.: 034 / 44-41-07 | факс: 034 / 44-58-84
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="3"
+                                       Style="{StaticResource topMesage}">
+                                e-mail: znamee@abv.bg | web: www.zname.info
+                            </TextBlock>
+                        </Grid>
+                        <Image Grid.Column="2" 
+                               Grid.Row="0" 
+                               Source="Icons\backGround\qr.png"
+                               Width="70" 
+                               HorizontalAlignment="Right" 
+                               Margin=" 0 -10 0 0"/>
+                    </Grid>
+                    <Grid Margin="0 10 0 0" 
+                          Panel.ZIndex="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0" 
+                                   FontWeight="ExtraBold"
+                                   FontSize="36" 
+                                   HorizontalAlignment="Center">
+                            ФАКТУРА
+                        </TextBlock>
+                        <WrapPanel Grid.Column="0"
+                                   Grid.Row="1" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="0 5 0 0">
+                            <TextBlock FontWeight="SemiBold">
+                                №
+                            </TextBlock>
+                            <TextBox Name="InvoiceNumber" 
+                                     Margin="6 -4 0 0"
+                                     MinWidth="124"
+                                     BorderBrush="Transparent"
+                                     Background="Transparent"
+                                     FontWeight="SemiBold"
+                                     Loaded="InvoiceNumber_Loaded"
+                                     Focusable="False">
+                            </TextBox>
+                        </WrapPanel>
+                        <WrapPanel Grid.Column="0" 
+                                   Grid.Row="2"
+                                   HorizontalAlignment="Center">
+                            <Button Name="PreviousInvoiceButton"
+                                    Content="&lt;&lt;" 
+                                    Margin="0 0 10 0"
+                                    Click="PreviousInvoiceButton_Click">
+                                <Button.ToolTip>
+                                    Предишна обява
+                                </Button.ToolTip>
+                            </Button>
+                            <TextBlock>
+                                дата:
+                            </TextBlock>
+                            <TextBox Name="InvoiceDate"
+                                     Margin="6 -2 0 0" 
+                                     Style="{StaticResource textBoxBorderBrushStyle}"
+                                     Loaded="InvoiceDateTextBox_Loaded"
+                                     LostFocus="InvoiceDateTextBox_LostFocus"
+                                     GotFocus="TextBox_GotFocus" 
+                                     TextChanged="InvoiceDateTextBox_TextChanged" MinWidth="100"
+                                     ToolTip="Въведете дата">
+                            </TextBox>
+                            <Button Name="ShowHideCalendarButton"
+                                    Content="Календар" 
+                                    Margin="10 0 0 0"
+                                    Click="ShowHideCalendarButton_Click"/>
+                            <Button Name="NextInvoiceButton" 
+                                    Content="&gt;&gt;" 
+                                    Margin="10 0 0 0"
+                                    Click="NextInvoiceButton_Click">
+                                <Button.ToolTip>
+                                    Следваща обява
+                                </Button.ToolTip>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="480"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <WrapPanel Grid.Column="0" 
+                                   Grid.Row="0" 
+                                   HorizontalAlignment="Left" >
+                            <TextBlock FontWeight="Bold"
+                                       FontSize="14">
+                                Найменование на услугата:
+                            </TextBlock>
+                            <ComboBox Name="AdvertisementComboBox"
+                                      SelectedIndex="0"
+                                      Margin="8 -2 0 0"
+                                      FontSize="12"
+                                      SelectionChanged="AdvertisementComboBox_SelectionChanged">
+                                <ComboBoxItem>
+                                    експресни обяви за граждани
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    експресна фирмена информация
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </WrapPanel>
+                        <WrapPanel Grid.Column="1" 
+                                   Grid.Row="0" 
+                                   HorizontalAlignment="Right">
+                            <TextBlock>
+                                Брой / поредност
+                            </TextBlock>
+                            <TextBox Name="InvoiceMultiplying"
+                                     Margin="6 0 6 0" 
+                                     Style="{StaticResource textBoxBorderBrushStyle}"
+                                     KeyUp="InputText_KeyUp" 
+                                     TextChanged="InvoiceMultiplying_TextChanged" 
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus"
+                                     MinWidth="20" 
+                                     ToolTip="Въведете колко пъти обявата да бъде разпечатана">
+                            </TextBox>
+                            <TextBlock>
+                                пъти
+                            </TextBlock>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Margin="0 10 0 30">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Icons\backGround\bg.png"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock FontWeight="Bold" 
+                                       Grid.Column="0"
+                                       Grid.Row="0" 
+                                       Margin="0 10 0 0">
+                                Клиент:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="1"
+                                       Margin="0 10 0 0">
+                                гр./с.:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="2"
+                                       Margin="0 10 0 0">
+                                булстат:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="3" 
+                                       Margin="0 10 0 0">
+                                улица:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="4"
+                                       Margin="0 10 0 0">
+                                М.О.Л.
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1"
+                              Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Name="CustomerName" 
+                                     Grid.Column="0" 
+                                     Grid.Row="0" 
+                                     Width="220" 
+                                     Margin="0 10 0 0"
+                                     Style="{StaticResource textBoxBorderBrushStyle}"
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus"
+                                     ToolTip="Въведете име на клиента">
+                            </TextBox>
+                            <TextBox Name="CustomerLocation"
+                                     Grid.Column="0" 
+                                     Grid.Row="1" 
+                                     Width="220"
+                                     Margin="0 10 0 0"
+                                     Style="{StaticResource textBoxBorderBrushStyle}" 
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus" 
+                                     ToolTip="Въведете населено място">
+                            </TextBox>
+                            <TextBox Name="CustomerBulstat"
+                                     Grid.Column="0" 
+                                     Grid.Row="2"
+                                     Width="220" 
+                                     Margin="0 10 0 0" 
+                                     Style="{StaticResource textBoxBorderBrushStyle}" 
+                                     GotFocus="TextBox_GotFocus"
+                                     TextChanged="CustomerBulstatTextBox_TextChanged" 
+                                     ToolTip="Въведете булстат номер">
+                            </TextBox>
+                            <TextBox Name="CustomerStreet"
+                                     Grid.Column="0"
+                                     Grid.Row="3"
+                                     Width="220"
+                                     Margin="0 10 0 0"
+                                     Style="{StaticResource textBoxBorderBrushStyle}"
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus" 
+                                     ToolTip="Въведете адрес">
+                            </TextBox>
+                            <TextBox Name="CustomerMOL"
+                                     Grid.Column="0"
+                                     Grid.Row="4"
+                                     Width="220"
+                                     Margin="0 10 0 0" 
+                                     Style="{StaticResource textBoxBorderBrushStyle}" 
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus"
+                                     ToolTip="Въведете М.О.Л. / получател">
+                            </TextBox>
+                        </Grid>
+                        <Grid Grid.Column="2" 
+                              Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock FontWeight="Bold" 
+                                       Grid.Column="0" 
+                                       Grid.Row="0" 
+                                       Margin="20 10 0 0">
+                                Изпълнител:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="1"
+                                       Margin="20 10 0 0">
+                                гр./с.:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="2"
+                                       Margin="20 10 0 0">
+                                булстат:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="3"
+                                       Margin="20 10 0 0">
+                                улица:
+                            </TextBlock>
+                            <TextBlock Grid.Column="0" 
+                                       Grid.Row="4"
+                                       Margin="20 10 0 0">
+                                М.О.Л.
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="3" 
+                              Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox Name="ExecutantName" 
+                                     Grid.Column="0"
+                                     Grid.Row="0"
+                                     Width="220" 
+                                     Margin="0 10 0 0"
+                                     Style="{StaticResource textBoxBorderBrushStyle}" 
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus" 
+                                     ToolTip="Въведете име на ипълнител">
+                            </TextBox>
+                            <TextBox Name="ExecutantLocation" 
+                                     Grid.Column="0"
+                                     Grid.Row="1" 
+                                     Width="220" 
+                                     Margin="0 10 0 0" 
+                                     Style="{StaticResource textBoxBorderBrushStyle}"
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus" 
+                                     ToolTip="Въведете град">
+                            </TextBox>
+                            <TextBox Name="ExecutantBulstat"
+                                     Grid.Column="0"
+                                     Grid.Row="2"
+                                     Width="220"
+                                     Margin="0 10 0 0"
+                                     Style="{StaticResource textBoxBorderBrushStyle}" 
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="ExecutantBulstatTextBox_LostFocus" 
+                                     TextChanged="ExecutantBulstatTextBox_TextChanged"
+                                     ToolTip="Въведете булстат номер">
+                            </TextBox>
+                            <TextBox Name="ExecutantStreet"
+                                     Grid.Column="0"
+                                     Grid.Row="3" 
+                                     Width="220" 
+                                     Margin="0 10 0 0"
+                                     Style="{StaticResource textBoxBorderBrushStyle}" 
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus" 
+                                     ToolTip="Въведете адрес">
+                            </TextBox>
+                            <TextBox Name="ExecutantMOL" 
+                                     Grid.Column="0" 
+                                     Grid.Row="4" 
+                                     Width="220" 
+                                     Margin="0 10 0 0" 
+                                     Style="{StaticResource textBoxBorderBrushStyle}"
+                                     GotFocus="TextBox_GotFocus"
+                                     LostFocus="SimpleTextBox_LostFocus" 
+                                     ToolTip="Въведете М.О.Л. на изпълнителя">
+                            </TextBox>
+                        </Grid>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" 
+                                   Grid.Row="0">
+                            текст
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" 
+                                   Grid.Row="0" 
+                                   HorizontalAlignment="Center">
+                            =================================================
+                        </TextBlock>
+                        <TextBox x:Name="InputText" 
+                                 Grid.Column="1" 
+                                 Grid.Row="1" 
+                                 MinHeight="160" 
+                                 MaxHeight="180"
+                                 TextWrapping="Wrap" 
+                                 BorderBrush="#D6202C"
+                                 ScrollViewer.CanContentScroll="True"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 KeyUp="InputText_KeyUp"
+                                 SizeChanged="InputText_SizeChanged"
+                                 GotFocus="TextBox_GotFocus"
+                                 LostFocus="SimpleTextBox_LostFocus" 
+                                 TextChanged="InputText_TextChanged"
+                                 ToolTip="Въведете текст за обявата" 
+                                 AcceptsReturn="True">
+                        </TextBox>
+                    </Grid>
+                    <WrapPanel Margin="0 10 0 0">
+                        <TextBlock>
+                            Брой думи:
+                        </TextBlock>
+                        <TextBox Name="NumberOfWords" 
+                                 Margin="6 -2 6 0" 
+                                 MinWidth="20" 
+                                 KeyUp="InputText_KeyUp" 
+                                 Style="{StaticResource textBoxBorderBrushStyle}">
+                        </TextBox>
+                        <TextBlock Margin="0 2 0 0">
+                            x
+                        </TextBlock>
+                        <TextBox Name="PricePerWord" 
+                                 Margin="6 -2 6 0" 
+                                 MinWidth="40" 
+                                 Style="{StaticResource textBoxBorderBrushStyle}" 
+                                 KeyUp="InputText_KeyUp"
+                                 GotFocus="TextBox_GotFocus"
+                                 LostFocus="SimpleTextBox_LostFocus"
+                                 TextChanged="PricePerWordTextBox_TextChanged"
+                                 ToolTip="Въведете ценова стойност за 1 дума">
+                        </TextBox>
+                        <TextBlock Margin="0 0 6 0">
+                            лв. за 1 дума =
+                        </TextBlock>
+                        <TextBlock Name="FinalPrice">
+                            0,00 лв.
+                        </TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Margin="0 8 0 0">
+                        <TextBlock FontWeight="Bold" 
+                                   Margin="0 0 6 0">
+                            Стойност на сделката:
+                        </TextBlock>
+                        <TextBlock Name="PriceWitoutDDS" 
+                                   FontWeight="Bold">
+                            0,00
+                        </TextBlock>
+                        <TextBlock FontWeight="Bold" 
+                                   Margin="6 0 6 0">
+                            лв. и ДДС (20%):
+                        </TextBlock>
+                        <TextBlock Name="DDSPrice" 
+                                   FontWeight="Bold">
+                            0,00 лв.
+                        </TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Margin="0 8 0 0">
+                        <TextBlock  FontWeight="Bold" 
+                                    Margin="0 0 6 0">
+                            Словом:
+                        </TextBlock>
+                        <TextBlock Name="PriceInWords"  
+                                   FontWeight="Bold"
+                                   MinWidth="150">
+                        </TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Margin="0 8 0 0">
+                        <TextBlock Margin="0 0 20 0">
+                            Плаща
+                        </TextBlock>
+                        <CheckBox Name="CashCheckBox"
+                                  Checked="CashCheckBox_Checked"
+                                  Loaded="CashCheckBox_Loaded">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="1.6" ScaleY="1.6" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <TextBlock Margin="6 0 20 0">
+                            в брой
+                        </TextBlock>
+                        <CheckBox Name="BankTransferCheckBox"
+                                  Checked="BankTransferCheckBox_Checked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="1.6" ScaleY="1.6" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <TextBlock Margin="6 0 0 0">
+                            по банкова сметка
+                        </TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Margin="0 8 0 0">
+                        <TextBlock>
+                            Стоката получена на
+                        </TextBlock>
+                        <TextBlock Margin="6 0 6 0" 
+                                   Text="{Binding Path=Text, ElementName=InvoiceDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        </TextBlock>
+                        <TextBlock>
+                            г. от
+                        </TextBlock>
+                        <TextBlock Margin="6 0 0 0" 
+                                   Text="{Binding Path=Text, ElementName=CustomerMOL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        </TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Margin="0 100 0 0">
+                        <Grid HorizontalAlignment="Center" 
+                              Margin="0 6 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="380"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0">
+                                Получател:.................................
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                       HorizontalAlignment="Right">
+                                Съставил:..................................
+                            </TextBlock>
+                        </Grid>
+                    </WrapPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </StackPanel>
+</Window>
