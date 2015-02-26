@@ -878,13 +878,21 @@ namespace NewspaperProgram
 
         private void SendCitizenAdvertisementEmail_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Office.Interop.Outlook.Application app = new Microsoft.Office.Interop.Outlook.Application();
-            Microsoft.Office.Interop.Outlook.MailItem mailItem = app.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
-            mailItem.Subject = "Обяви за граждани";
-            mailItem.To = "someone@example.com";
-            mailItem.Body = "Обяви за граждани за деня";
-            mailItem.Attachments.Add(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/2.doc");
-            mailItem.Display(true);
+            //Microsoft.Office.Interop.Outlook.Application app = new Microsoft.Office.Interop.Outlook.Application();
+            //Microsoft.Office.Interop.Outlook.MailItem mailItem = app.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+            //mailItem.Subject = "Обяви за граждани";
+            //mailItem.To = "someone@example.com";
+            //mailItem.Body = "Обяви за граждани за деня";
+            //mailItem.Attachments.Add(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/2.doc");
+            //mailItem.Display(true);
+
+            SendEmail mail = new SendEmail();
+            mail.To = "someone@example.com";
+            mail.Body = "Обяви за граждани за деня";
+            mail.Subject = "Обяви за граждани";
+            mail.Attach = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\2.doc";
+            mail.Attach = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\4.doc";
+            mail.Send();
         }
 
         private void SendCompanyAdvertisementEmail_Click(object sender, RoutedEventArgs e)
